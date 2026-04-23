@@ -10,10 +10,6 @@ jobs:
   publish:
     name: Build & publish
     runs-on: ubuntu-latest
-    # Must match the environment you registered on npm's Trusted Publisher.
-    environment:
-      name: npm
-      url: https://www.npmjs.com/package/@emailalias/react
     # Required for OIDC (Trusted Publisher) + npm provenance attestation.
     permissions:
       contents: read
@@ -23,7 +19,10 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          # Node 24 ships with npm 11, which is required for the Trusted
+          # Publisher OIDC exchange flow. Node 22 ships with npm 10 which
+          # doesn't know how to auto-auth with npm via OIDC.
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
@@ -33,6 +32,5 @@ jobs:
         run: npm run build
 
       - name: Publish to npm via Trusted Publisher
+        # --access public required for scoped packages on first publish.
         run: npm publish --provenance --access public
-        # --access public is required for scoped packages on first publish.
-        # No NODE_AUTH_TOKEN — OIDC handles auth.
