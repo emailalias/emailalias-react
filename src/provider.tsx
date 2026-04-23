@@ -2,11 +2,11 @@ import React, { createContext, useContext, useMemo } from "react";
 
 /**
  * `proxyBaseUrl` should point to YOUR backend, which forwards requests to
- * api.emailalias.io with the API key attached server-side. Never ship an
+ * emailalias.io with the API key attached server-side. Never ship an
  * API key to the browser — anyone can read it from devtools.
  *
  * Example (Next.js Route Handler):
- *   app/api/ea/[...path]/route.ts  →  proxies to api.emailalias.io
+ *   app/api/ea/[...path]/route.ts  →  proxies to emailalias.io
  *   <EmailAliasProvider proxyBaseUrl="/api/ea"> ... </EmailAliasProvider>
  */
 export interface EmailAliasContextValue {
