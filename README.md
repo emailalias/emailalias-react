@@ -1,12 +1,12 @@
 # @emailalias/react
 
-React hooks for the [EmailAlias](https://emailalias.io) API. Works in any React 17+ app (including Next.js).
+React hooks for the [EmailAlias.io](https://emailalias.io) API. Works in any React 17+ app (including Next.js).
 
 API access is a **Premium** feature. Generate a key from **Settings → API Keys** in the web dashboard.
 
 ## ⚠️ Read this first — API keys must stay on your server
 
-**Never put a `ea_live_...` key in the browser bundle.** Anyone can open devtools and copy it. EmailAlias keys are Premium-gated and can be used to run up email sends on your account.
+**Never put a `ea_live_...` key in the browser bundle.** Anyone can open devtools and copy it. EmailAlias.io keys are Premium-gated and can be used to run up email sends on your account.
 
 This library deliberately does **not** accept an API key. Instead, you point it at a **proxy endpoint on your own backend** that attaches the key server-side. In Next.js, a Route Handler is perfect:
 
