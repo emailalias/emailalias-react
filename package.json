@@ -1,6 +1,6 @@
 {
   "name": "@emailalias/react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React hooks for consuming EmailAlias via a backend proxy.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
