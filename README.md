@@ -27,8 +27,10 @@ export async function DELETE(req: NextRequest, { params }: { params: { path: str
   return proxy(req, params.path);
 }
 
+const UPSTREAM = process.env.EMAILALIAS_BASE_URL ?? "https://api.emailalias.io";
+
 async function proxy(req: NextRequest, path: string[]) {
-  const url = `https://api.emailalias.io/api/${path.join("/")}${req.nextUrl.search}`;
+  const url = `${UPSTREAM}/api/${path.join("/")}${req.nextUrl.search}`;
   const body = req.body ? await req.text() : undefined;
   const res = await fetch(url, {
     method: req.method,
