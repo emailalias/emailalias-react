@@ -5,6 +5,9 @@ export interface Alias {
   destination_email: string;
   active: boolean;
   label: string | null;
+  display_name: string | null;
+  display_name_pending: string | null;
+  display_name_pending_since: string | null;
   created_at: string;
 }
 
@@ -29,6 +32,10 @@ export interface CreateAliasOptions {
   destination_email?: string;
   custom_code?: string;
   tag?: string;
+  /** Premium-only. Sender label on outbound mail ("Name <addr>"). Set on
+   * creation activates immediately; subsequent edits go through the
+   * dedicated /display-name endpoint with a 24h cooldown. */
+  display_name?: string;
 }
 
 export interface AsyncState<T> {

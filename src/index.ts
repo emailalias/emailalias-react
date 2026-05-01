@@ -9,6 +9,7 @@ export {
   useAvailableDomains,
   useCreateAlias,
   useUpdateAlias,
+  useUpdateAliasDisplayName,
   useDeleteAlias,
   useAddDestination,
   useDeleteDestination,

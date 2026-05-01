@@ -147,6 +147,27 @@ export function useUpdateAlias() {
   );
 }
 
+/**
+ * Schedule a display-name change for an alias (Premium-only).
+ *
+ * Edits go through a 24-hour cooldown — the new value lands in
+ * `display_name_pending` and promotes to `display_name` 24h after the
+ * most recent edit. Capped at 3 edits per rolling 24h per alias. Pass
+ * `null` (or empty string) to clear the name; clearing follows the same
+ * cooldown.
+ *
+ * Brand-impersonation patterns (PayPal, Apple, banks, etc.) are
+ * rejected with 400 after homoglyph/leetspeak normalisation.
+ */
+export function useUpdateAliasDisplayName() {
+  return useMutation(
+    async (ctx, aliasId: string, displayName: string | null) =>
+      request<Alias>(ctx, "PATCH", `/api/aliases/${aliasId}/display-name`, {
+        display_name: displayName,
+      })
+  );
+}
+
 export function useDeleteAlias() {
   return useMutation(async (ctx, aliasId: string) =>
     request<void>(ctx, "DELETE", `/api/aliases/${aliasId}`)

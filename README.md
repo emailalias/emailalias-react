@@ -132,6 +132,7 @@ export default function AliasesPage() {
 |---|---|
 | `useCreateAlias()` | `POST /api/aliases` |
 | `useUpdateAlias()` | `PATCH /api/aliases/{id}` |
+| `useUpdateAliasDisplayName()` | `PATCH /api/aliases/{id}/display-name` |
 | `useDeleteAlias()` | `DELETE /api/aliases/{id}` |
 | `useAddDestination()` | `POST /api/destinations` |
 | `useDeleteDestination()` | `DELETE /api/destinations/{id}` |
